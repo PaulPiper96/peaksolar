@@ -1,0 +1,32 @@
+<title>PeakSolar</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="styles/export-manual.css" />   
+<div class="zl-mx-wrapper zl-flex zl-fl-column zl-fl-grow"> 
+ <header class="zl-mx-header">
+  <h3>PeakSolar</h3>
+ </header>
+ <div id="zl-include-banner"></div> 
+ <div class="zl-mx-container">
+  <nav class="zl-mx-nav zl-flex zl-fl-column">
+   <div class="zl-expand-collapse" id="zls-expandcollapseall" onclick="expandCollapseAll(this,false)">
+    Collapse all
+   </div>
+   <ul class="zl-ul-reset zl-fl-grow zl-overflow-auto" id="apendArticles">
+    <li><strong class="zl-expand" purpose="chapter" onclick="expandCollapse(this)">Funktion</strong> 
+     <ul class="zl-ul-reset" purpose="appendChapterArticles">
+      <li purpose="zl-article-li" class="zl-mx-active"><a href="#" onclick="loadFile(this, &quot;./templates/funktion/grober-aufbau.html&quot;)">Grober Aufbau</a></li>
+      <li purpose="zl-article-li" class=""><a href="#" onclick="loadFile(this, &quot;./templates/funktion/entwicklungsumgebung.html&quot;)">Entwicklungsumgebung</a></li>
+      <li purpose="zl-article-li" class=""><a href="#" onclick="loadFile(this, &quot;./templates/funktion/daten.html&quot;)">Daten</a></li>
+      <li purpose="zl-article-li" class=""><a href="#" onclick="loadFile(this, &quot;./templates/funktion/frontend.html&quot;)">Frontend</a></li>
+      <li purpose="zl-article-li" class=""><a href="#" onclick="loadFile(this, &quot;./templates/funktion/sicherheitsaspekte.html&quot;)">Sicherheitsaspekte</a></li>
+      <li purpose="zl-article-li" class=""><a href="#" onclick="loadFile(this, &quot;./templates/funktion/anfragen.html&quot;)">Anfragen</a></li>
+     </ul></li>
+   </ul>
+  </nav> 
+  <article class="zl-fl-grow zl-overflow-auto zl-flex">
+   <iframe class="zl-content-container" id="contentLoad" src="./templates/funktion/grober-aufbau.html"></iframe>
+  </article> 
+ </div> 
+</div>  
+<script>		function loadFile(ele, filePath) { document.getElementById( "contentLoad" ).src = filePath; document.getElementsByClassName("zl-mx-active")[0].classList.remove("zl-mx-active"); ele.parentElement.classList.add("zl-mx-active");}		function expandCollapse(ele){var element = ele.parentElement.querySelector("[purpose=appendChapterArticles]"); var classList = element.classList; var isExpand=classList.contains('zl-hide'); if(isExpand) { ele.classList.remove("zl-collapse"); ele.classList.add("zl-expand"); element.classList.remove('zl-hide'); } else { ele.classList.remove("zl-expand"); ele.classList.add("zl-collapse"); element.classList.add('zl-hide'); } if(document.getElementById("apendArticles").getElementsByClassName(isExpand?"zl-collapse":"zl-expand").length == 0) { var expandCollapseAllEle = document.getElementById("zls-expandcollapseall"); expandCollapseAllEle.textContent=isExpand? "Collapse all" : "Expand all"; expandCollapseAllEle.setAttribute("onclick", "expandCollapseAll(this,"+ !isExpand +")"); }}		function expandCollapseAll(ele, isExpand){ele.textContent=isExpand? "Collapse all" : "Expand all"; ele.setAttribute("onclick", "expandCollapseAll(this,"+ !isExpand +")"); var elements = document.querySelectorAll("[purpose=appendChapterArticles]"); elements.forEach(function(element, index){ var chapterElement = element.parentElement.querySelector("[purpose=chapter]"); if(isExpand) {chapterElement.classList.remove("zl-collapse"); chapterElement.classList.add("zl-expand"); element.classList.remove('zl-hide'); } else { chapterElement.classList.remove("zl-expand"); chapterElement.classList.add("zl-collapse"); element.classList.add('zl-hide'); } });}	</script>
